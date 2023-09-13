@@ -330,7 +330,9 @@ img {
 
 
 /* Add shadow header */
-
+.shadow-header{
+  box-shadow: 0 1px 16px hsla(0, 0%, 0%, .12);
+}
 
 /* Active link */
 
@@ -416,17 +418,142 @@ img {
   padding: 6px;
   display: grid;
   place-items: center;
-  transition: background-color .3s ;
+  transition: background-color .3s;
+}
+.home__social-link:hover{
+  background-color: var(--black-color);
+
+}
+
+.home__info{
+  margin-top: 4rem;
+}
+
+.home__description{
+  text-align: center;
+  color: var(--title-color);
+  margin-bottom: 1.5rem;
+}
+
+.home__description b{
+  background:linear-gradient(90deg,
+  hsla(14,98%,50%,.3),
+  hsla(14,98%,50%,0)) ;
+}
+
+.home__scroll{
+  
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.home__scroll-text{
+  display: none;
+  text-align: center;
+}
+
+.home__scroll-box{
+  background-color: var(--black-color);
+  color: var(--white-color);
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color .4s;
+}
+
+.home__scroll-box i{
+  animation: scroll-down 3s infinite;
 }
 
 /* Animate scroll icon */
+
+@keyframes scroll-down{
+  0%{
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  50%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(.6rem);
+    opacity: 0;
+  }
+}
 
 
 /*=============== BUTTON ===============*/
 
 
 /*=============== ABOUT ===============*/
+.about{
+  background-color: var(--container-color);
+  transition: .4s;
+}
 
+.about__container{
+  row-gap: 0;
+}
+
+.about__perfil{
+  position: relative;
+  justify-self: center;
+  margin-block: 2.5rem 4.5rem;
+
+}
+
+.about__image{
+  width: 220px;
+}
+
+.about__img{
+  position: relative;
+  border: 4p solid var(--white-color);
+  z-index: 1;
+}
+
+.about__shadow,
+.about__line,
+.about__box{
+  position: absolute;
+}
+
+.about__shadow{
+  width: 150px;
+  height: 385px;
+  background-color: var(--body-color);
+  top: -2.5rem;
+  right: -2.5rem;
+  border-bottom: 4px solid var(--first-color);
+  transition: background-color .4s;
+}
+
+.about__perfil .geometric-box{
+  top: 1.5rem;
+  right: -2.8rem;
+}
+
+.about__line{
+  filter: invert(1);
+  right: -1.25rem;
+  top: 6rem;
+  width: 50px;
+  transition: filter .4s;
+}
+
+.about__box{
+  width: 40px;
+  height: 40px;
+  background-color: var(--first-color);
+  right: -.5rem;
+  bottom: 1.5rem;
+}
 
 /*=============== SERVICES ===============*/
 
