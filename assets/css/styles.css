@@ -220,8 +220,113 @@ img {
 
 /* Navigation for mobile devices */
 
+@media screen and (max-width: 1150px) {
+  .nav__menu{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, .75);
+    width: 100%;
+    padding-block: 1.8rem 5rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: top .4s;
+
+  }
+
+}
+
+.nav__title,
+.nav__name,
+.nav__close{
+  color: var(--white-color);
+
+}
+.nav__title{
+  display: block;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 3.5rem;
+
+}
+
+.nav__name{
+  position: relative;
+  width: max-content;
+  margin: 0 auto 3rem;
+  font-size: var(--h2-font-size);
+}
+
+.nav__name::after,
+.nav__name::before{
+  content: '';
+  width: 40px;
+  height: 1px;
+  background-color: var(--text-color-light);
+  position: absolute;
+  top: 50%;
+  left: -4rem;
+
+}
+
+.nav__name::before{
+  left: initial;
+  right: -4rem;
+}
+
+.nav__list{
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+}
+
+
+
+.nav__link{
+  position: relative;
+  color: var(--text-color-light);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  transition: color .3s;
+
+}
+
+.nav__link::after{
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: var(--white-color);
+  position: absolute;
+  left: 0;
+  bottom: -.5rem;
+
+  transition: width .3s;
+
+}
+
+.nav__link:hover{
+  color: var(--white-color);
+
+}
+
+.nav__link:hover::after{
+  width: 30%;
+}
+
+.nav__close{
+  position: absolute;
+  font-size: 1.5rem;
+  top: 1rem;
+  right: 1.5rem;
+  cursor: pointer;
+
+}
 
 /* Show menu */
+
+.show-menu{
+  top: 0;
+}
 
 
 /* Add shadow header */
@@ -232,6 +337,87 @@ img {
 
 /*=============== HOME ===============*/
 
+.home__container{
+  padding-top: 2rem;
+}
+
+.home__name{
+  font-size: var(--biggest-font-size);
+  text-align: center;
+}
+
+.home__perfil{
+  position: relative;
+  justify-self: center;
+
+}
+
+.home__image{
+  width: 220px;
+}
+
+.home__img{
+  position: relative;
+  z-index: 10; 
+}
+
+.home__shadow{
+  width: 100%;
+  height: 100%;
+  background-color: var(--container-color);
+  position: absolute;
+  bottom: -.75rem;
+  right: -.75rem;
+  border: 4px solid var(--black-color);
+  z-index: 5;
+  transition: background-color .4s;
+} 
+.home__arrow,
+.home__line{
+  position: absolute;
+  filter: invert(1);
+  width: 50px;
+  transition: filter .4s;
+
+}
+
+.home__arrow{
+  left: 40%;
+  bottom: -4rem;
+
+}
+
+.home__line{
+  right: -2rem;
+  bottom: -.5rem;
+}
+
+.home__perfil .geometric-box{
+  top: 2.5rem;
+  left: -.7rem;
+  z-index: 10;
+}
+
+.home__social{
+  height: max-content;
+  position: absolute;
+  left: 3rem;
+  top: -20rem;
+  bottom: 0;
+  margin: auto 0;
+  display: grid;
+  row-gap: 1rem;
+}
+
+.home__social-link{
+  background-color: var(--black-color-light);
+  color: var(--white-color);
+  font-size: 1.25rem;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  transition: background-color .3s ;
+}
 
 /* Animate scroll icon */
 
