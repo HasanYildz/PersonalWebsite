@@ -68,6 +68,8 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+
+  transition: background-color .4s;
 }
 
 h1, h2, h3, h4 {
@@ -90,16 +92,79 @@ img {
 }
 
 /*=============== THEME ===============*/
+.nav__buttons{
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
 
+.change-theme{
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: color .3s;
+}
 
 /*========== Variables Dark theme ==========*/
-
+body.dark-theme{
+  --first-color: hsl(14, 80%, 50%);
+  --black-color: hsl(0, 0%, 18%);
+  --black-color-light: hsl(0, 0%, 30%);
+  --title-color: hsl(0, 0%, 95%);
+  --text-color: hsl(0, 0%, 70%);
+  --body-color: hsl(0, 0%, 8%);
+  --container-color: hsl(0, 0%, 12%);
+}
 
 /*========== 
 	Color changes in some parts of 
 	the website, in dark theme
 ==========*/
 
+.dark-theme .shadow-header{
+  box-shadow: 0 1px 12px hsla(0, 0%, 0%, .6);
+}
+
+.dark-theme .section__title-1::after,
+.dark-theme .section__title-2::after{
+  background-color: hsla(14, 70%, 50%, .2);
+}
+
+.dark-theme :is(.home__arrow,.home__line,.about__line){
+  filter: none;
+}
+
+.dark-theme .home__description b {
+  background: linear-gradient(90deg,
+              hsla(14,80%,50%i .3),
+              hsla(14,80%,50%,0)  );
+}
+.dark-theme :is(.button__ghost, .services__icon i){
+  color: var(--white-color);
+}
+
+.dark-theme .projects__card:hover{
+  background-color: var(--body-color);
+
+}
+
+.dark-theme :is(.contact__mail, .contact__input, .contact__label){
+  background-color: var(--container-color);
+}
+
+.dark-theme .footer{
+  background-color: hsl(0, 0%, 4%);
+}
+
+.dark-theme::-webkit-scrollbar{
+  background-color: hsl(0, 0%, 20%);
+}
+.dark-theme::-webkit-scrollbar-thumb{
+  background-color: hsl(0, 0%, 30%);
+}
+.dark-theme::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(0, 0%, 40%);
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -176,13 +241,14 @@ img {
   top: 0;
   left: 0;
   background-color: var(--body-color);
-  z-index: inherit;
-  transition: box-shadow .4s;
+  z-index: var(--z-fixed);
+  transition: box-shadow .4s, background-color .4s;
 }
 
 .nav{
   position: relative;
   height:  var(--header-height);
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -299,7 +365,7 @@ img {
   position: absolute;
   left: 0;
   bottom: -.5rem;
-
+  top: 0;
   transition: width .3s;
 
 }
@@ -335,6 +401,13 @@ img {
 }
 
 /* Active link */
+.active-link{
+  color: var(--white-color);
+}
+
+.active-link:after{
+  width: 25%;
+}
 
 
 /*=============== HOME ===============*/
@@ -783,6 +856,7 @@ img {
 
 .contact{
   padding-bottom: 0;
+  
 }
 
 .contact__container{
@@ -800,7 +874,7 @@ img {
   margin-left: auto;
   border-bottom: 4px solid var(--first-color);
   z-index: 5;
-  transition: background-color  .4s;
+  transition: background-color .4s;
 }
 
 .contact__data .section__title-2{
@@ -982,23 +1056,246 @@ img {
   background-color: var(--first-color);
 }
 
-/*=============== FOOTER ===============*/
 
+.contact__message{
+  color:var(--white-color);
+  font-size: var(--small-font-size);
+  position: absolute;
+  bottom: -1.6rem;
+  left: 0;
+}
+/*=============== FOOTER ===============*/
+.footer{
+  background-color:var(--black-color) ;
+}
+
+.footer__container{
+  padding-block:3rem 2rem ;
+  row-gap: 2.5rem;
+}
+
+.footer__links{
+  display: flex;
+  justify-content: center;
+  column-gap:2rem ;
+}
+
+
+.footer__link{
+  color: var(--white-color);
+  transition: color .4s;
+}
+.footer__link:hover{
+  color: var(--text-color-light);
+}
+
+.footer__copy{
+  color: var(--text-color-light);
+  font-size: var(--small-font-size);
+  text-align: center;
+}
+
+.footer__copy a{
+  color: var(--white-color);
+  font-weight: var(--font-medium);
+}
 
 /*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+  width: .6rem;
+  border-radius: .5rem;
+  background-color: hsl(0,0,65%);
+}
 
+::-webkit-scrollbar-thumb{
+  border-radius: .5rem;
+  background-color: hsl(0, 0%, 55%);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(0,0,45%);
+}
 
 /*=============== SCROLL UP ===============*/
+.scrollup{
+  position: fixed;
+  right: 1rem;
+  bottom: -50%;
+  background-color: var(--black-color);
+  display : inline-flex ;
+  padding: 8px;
+  font-size: 1.25rem;
+  color: var(--white-color);
+  z-index: var(--z-tooltip);
+  transition: bottom .4s, transform .4s,background-color .4s ;
 
+}
+
+.scrollup:hover{
+  transform: translateY(-.5rem);
+}
 
 /* Show Scroll Up */
 
+.show-scroll{
+  bottom: 3rem;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .home__image {
+    width: 180px;
+  }
+
+  .about__image {
+    width: 180px;
+  }
+  .about__shadow {
+    height: 330px;
+    right: -2.5rem;
+  }
+
+  .contact__data {
+    width: 100%;
+  }
+
+  .contact__data .section__title-2 {
+    transform: translateX(0);
+  }
+}
 
 
 /* For medium devices */
+@media screen and (min-width: 576px){
+  .home__container,
+  .about__container,
+  .projects__container{
+    grid-template-columns: 350px;
+    justify-content: center;
+  }
 
+  .contact__data {
+    width: 350px;
+    padding: 4rem 1.5rem ;
+    margin-inline: auto;
+
+  }
+
+  .contact__container{
+    grid-template-columns: 500px ;
+    justify-content: center;
+  }
+
+  .contact__group{
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+  }
+
+  /* .contact__social {
+    background-color: transparent; /* Tamamen şeffaf siyah renk 
+  } 
+  */
+
+  .contact__social-arrow{
+    filter: invert(1);
+  }
+
+  .contact__social-description-1{
+    color: var(--text-color);
+  }
+  .contact__social-description-2{
+    color: var(--title-color);
+  }
+}
+
+
+@media screen and (min-width: 768px){
+
+  .services__container{
+    grid-template-columns: repeat(2,250px);
+  }
+
+  .projects__container{
+    grid-template-columns: repeat(2,350px);
+  }
+/* 
+  .contact__social {
+    background-color: transparent; 
+  }
+   */
+}
 
 /* For large devices */
+@media screen and (min-width: 1150px){
+  .container{
+    margin-inline:auto ;
+  }
+
+  .section{
+    padding-block: 7rem 2rem;
+  }
+  .section__title-1::after,
+  .section__title-2::after{
+    width: 70px;
+    height: 48px;
+  }
+
+  .geometric-box{
+    transform: scale(1.2);
+
+  }
+
+  .nav{
+    height: calc(var(--header-height) + 2rem);
+    column-gap: 4rem;
+  }
+
+  .nav__close,
+  .nav__toggle,
+  .nav__title,
+  .nav__name{
+    display: none;
+  }
+
+  .nav__list{
+    flex-direction: row;
+    column-gap: 4rem;
+
+  }
+
+  .nav__menu{
+    margin-left: auto;
+  }
+
+  .nav__link{
+    color: var(--text-color);
+    font-size: var(--normal-font-size);
+  }
+
+  .nav__link:hover{
+    color: var(--title-color);
+  }
+
+  .nav__link:after{
+    background-color: var(--title-color);
+  }
+
+  .active-link{
+    color: var(--title-color);
+  }
+
+  .nav__link-button{
+    background-color: var(--black-color);
+    color: var(--white-color);
+    padding: 1.1rem 1.5rem;
+  }
+
+  .nav__link-button:hover{
+    color: var(--white-color);
+  }
+}
