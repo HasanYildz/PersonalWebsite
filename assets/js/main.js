@@ -124,3 +124,14 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 /*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr =ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration:2500,
+    delay: 400,
+
+    //reset:true
+})
+
+sr.reveal(`.home__perfil`,{origin : 'right'})
+sr.reveal(`.home__name, .home__info`,{origin : 'left'})
