@@ -1,27 +1,27 @@
 /*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close')
+    navToggle = document.getElementById('nav-toggle'),
+    navClose = document.getElementById('nav-close')
 
 /*===== MENU SHOW =====*/
 /* Validate if constant exists */
-if(navToggle){
-    navToggle.addEventListener('click', () =>{
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
         navMenu.classList.add('show-menu')
     })
 }
 
 /*===== MENU HIDDEN =====*/
 /* Validate if constant exists */
-if(navClose){
-    navClose.addEventListener('click', () =>{
+if (navClose) {
+    navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-menu')
     })
 }
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link')
 
-const linkAction = () =>{
+const linkAction = () => {
     const navMenu = document.getElementById('nav-menu')
     // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
@@ -29,72 +29,72 @@ const linkAction = () =>{
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*=============== CHANGE BACKGROUND HEADER ===============*/
-const shadowHeader = () =>{
+const shadowHeader = () => {
     const header = document.getElementById('header')
     // When the scroll is greater than 50 viewport height, add the shadow-header class to the header tag
-    this.scrollY >= 50 ? header.classList.add('shadow-header') 
-                       : header.classList.remove('shadow-header')
+    this.scrollY >= 50 ? header.classList.add('shadow-header')
+        : header.classList.remove('shadow-header')
 }
 window.addEventListener('scroll', shadowHeader)
 
 
 /*=============== EMAIL JS ===============*/
 const contactForm = document.getElementById('contact-form'),
-    contactMessage =document.getElementById('contact-message')
+    contactMessage = document.getElementById('contact-message')
 
-const sendEmail = (e) =>{
+const sendEmail = (e) => {
     e.preventDefault()
     // serviceID - templateID - #form - publicKey
-    emailjs.sendForm('service_358gs69','template_popuxce','#contact-form','KmImjmEPNDvGL3oWi')
-    .then(() => {
-        // Show sent message
-        contactMessage.textContent= 'Message sent successfully ✅'
+    emailjs.sendForm('service_358gs69', 'template_popuxce', '#contact-form', 'KmImjmEPNDvGL3oWi')
+        .then(() => {
+            // Show sent message
+            contactMessage.textContent = 'Message sent successfully ✅'
 
-        // Remove message after five seconds
-        setTimeout(()=>{
-            contactMessage.textContent = ''
-        }, 5000)
+            // Remove message after five seconds
+            setTimeout(() => {
+                contactMessage.textContent = ''
+            }, 5000)
 
-        // Clear input fields
-        contactForm.reset()
-    }, ()=>{
-        // Show error message
-        contactMessage.textContent= 'Message not sent (service error) ❌'
-    })
+            // Clear input fields
+            contactForm.reset()
+        }, () => {
+            // Show error message
+            contactMessage.textContent = 'Message not sent (service error) ❌'
+        })
 }
 
-contactForm.addEventListener('submit',sendEmail)
+contactForm.addEventListener('submit', sendEmail)
 
-/*=============== SHOW SCROLL UP ===============*/ 
-const scrollUp = () =>{
-	const scrollUp = document.getElementById('scroll-up')
+/*=============== SHOW SCROLL UP ===============*/
+const scrollUp = () => {
+    const scrollUp = document.getElementById('scroll-up')
     // When the scroll is higher than 350 viewport height, add the show-scroll class to the a tag with the scrollup class
-	this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
-						: scrollUp.classList.remove('show-scroll')
+    this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
+        : scrollUp.classList.remove('show-scroll')
 }
 window.addEventListener('scroll', scrollUp)
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
-    
-const scrollActive = () =>{
-  	const scrollDown = window.scrollY
 
-	sections.forEach(current =>{
-		const sectionHeight = current.offsetHeight,
-			  sectionTop = current.offsetTop - 58,
-			  sectionId = current.getAttribute('id'),
-			  sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+const scrollActive = () => {
+    const scrollDown = window.scrollY
 
-		if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
-			sectionsClass.classList.add('active-link')
-		}else{
-			sectionsClass.classList.remove('active-link')
-		}                                                    
-	})
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight,
+            sectionTop = current.offsetTop - 58,
+            sectionId = current.getAttribute('id'),
+            sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+
+        if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
+            sectionsClass.classList.add('active-link')
+        } else {
+            sectionsClass.classList.remove('active-link')
+        }
+    })
 }
 window.addEventListener('scroll', scrollActive)
-/*=============== DARK LIGHT THEME ===============*/ 
+/*=============== DARK LIGHT THEME ===============*/
 const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'ri-sun-line'
@@ -109,9 +109,9 @@ const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moo
 
 // We validate if the user previously chose a topic
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
 }
 
 // Activate / deactivate the theme manually with the button
@@ -124,19 +124,41 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 /*=============== SCROLL REVEAL ANIMATION ===============*/
-const sr =ScrollReveal({
+const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration:2500,
+    duration: 2500,
     delay: 400,
 
     //reset:true
 })
 
-sr.reveal(`.home__perfil, .about__image, .contact__mail`,{origin : 'right'})
+sr.reveal(`.home__perfil, .about__image, .contact__mail`, { origin: 'right' })
 
 sr.reveal(`.home__name, .home__info
             .about__container, .section__title-1, .about__info,
-            .contact__social, .contact__data`,{origin : 'left'})
+            .contact__social, .contact__data`, { origin: 'left' })
 
-sr.reveal(`.services__card, .projects__card`,{interval:100})            
+sr.reveal(`.services__card, .projects__card`, { interval: 100 })
+
+const webchat = document.querySelector('#webchat');
+const toggleButton = document.querySelector('#toggleBot');
+
+
+
+
+
+window.botpressWebChat.init({
+    "composerPlaceholder": "Chat with bot",
+    "botConversationDescription": "This chatbot was built surprisingly fast with Botpress",
+    "botId": "aae13f47-8048-4e90-ae93-14f1c724f95f",
+    "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+    "messagingUrl": "https://messaging.botpress.cloud",
+    "clientId": "aae13f47-8048-4e90-ae93-14f1c724f95f",
+    "webhookId": "eb004ad9-0402-4df8-b003-a7752576ccb7",
+    "lazySocket": true,
+    "themeName": "prism",
+    "frontendVersion": "v1",
+    "theme": "prism",
+    "themeColor": "#2563eb"
+});
